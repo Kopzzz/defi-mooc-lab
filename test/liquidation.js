@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { network, ethers } = require("hardhat");
 const { BigNumber, utils } = require("ethers");
 
-describe("Liquidation for question 2", function () {
+describe("Liquidation 2", function () {
   it("above do flash loan with 2000 USDT.", async function () {
     await network.provider.request({
       method: "hardhat_reset",
@@ -69,9 +69,6 @@ describe("Liquidation for question 2", function () {
     console.log("Profit", utils.formatEther(profit), "ETH");
 
     expect(profit.gt(BigNumber.from(0)), "not profitable").to.be.true;
-    // writeFile("profit.txt", String(utils.formatEther(profit)), function (err) {
-    //   console.log("failed to write profit.txt: %s", err);
-    // });
   });
   it("above do flash loan with 5000 USDT.", async function () {
     await network.provider.request({
@@ -182,6 +179,6 @@ describe("Liquidation for question 2", function () {
         (overrides = { gasPrice: gasPrice })
       )
     ).to.be.reverted;
-    console.log("Transaction revert, No profit from this liquidation");
+    console.log("Transaction revert, No profit from this liquidation.");
   });
 });
